@@ -1,0 +1,31 @@
+syntax = "proto3";
+package protos;
+
+import "utils.proto";
+
+message CreatePlayerRequest {
+    string userId = 1;
+    string username = 2;
+    string name = 3;
+    uint32 rank = 4;
+    string phone = 5;
+    string college = 6;
+    string country = 7;
+    uint32 year = 8;
+}
+
+message getPlayerResponse{
+    string userId = 1;
+    string username = 2;
+    string name = 3;
+    uint32 rank = 4;
+    string phone = 5;
+    string college = 6;
+    string country = 7;
+    uint32 year = 8;
+}
+
+service PlayerService {
+    rpc createPlayer(CreatePlayerRequest) returns (Empty);
+    rpc getPlayer(Empty) returns (getPlayerResponse);
+}
