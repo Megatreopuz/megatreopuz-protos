@@ -17,4 +17,5 @@ message Player {
 service PlayerService {
     rpc createPlayer(Empty) returns (Empty);
     rpc getPlayer(Empty) returns (Player);
+    rpc updatePlayer(Empty) returns (Empty);
 }
