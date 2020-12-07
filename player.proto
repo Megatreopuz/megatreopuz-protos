@@ -14,8 +14,13 @@ message Player {
     uint32 year = 8;
 }
 
+message usernameAvialResponse {
+    bool isAvailable = 1;
+}
+
 service PlayerService {
     rpc createPlayer(Empty) returns (Empty);
     rpc getPlayer(Empty) returns (Player);
     rpc updatePlayer(Empty) returns (Empty);
+    rpc usernameAvail(Empty) returns (usernameAvialResponse);
 }
