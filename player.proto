@@ -5,13 +5,16 @@ import "utils.proto";
 
 message Player {
     string userId = 1;
-    string username = 2;
-    string name = 3;
-    uint32 rank = 4;
-    string phone = 5;
-    string college = 6;
-    string country = 7;
-    uint32 year = 8;
+}
+
+message PlayerRequest {
+    string username = 1;
+    string name = 2;
+    uint32 rank = 3;
+    string phone = 4;
+    string college = 5;
+    string country = 6;
+    uint32 year = 7;
 }
 
 message usernameAvialResponse {
@@ -19,7 +22,7 @@ message usernameAvialResponse {
 }
 
 service PlayerService {
-    rpc createPlayer(Empty) returns (Empty);
+    rpc createPlayer(PlayerRequest) returns (Empty);
     rpc getPlayer(Empty) returns (Player);
     rpc updatePlayer(Empty) returns (Empty);
     rpc usernameAvail(Empty) returns (usernameAvialResponse);
