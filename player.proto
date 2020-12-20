@@ -2,12 +2,9 @@ syntax = "proto3";
 package protos;
 
 import "utils.proto";
+import "google/api/annotations.proto";
 
 message Player {
-    string userId = 1;
-}
-
-message PlayerRequest {
     string username = 1;
     string name = 2;
     uint32 rank = 3;
@@ -21,9 +18,27 @@ message usernameAvialResponse {
     bool isAvailable = 1;
 }
 
+message trialResponse{
+    string message = 1;
+}
+
 service PlayerService {
-    rpc createPlayer(PlayerRequest) returns (Empty);
-    rpc getPlayer(Empty) returns (Player);
-    rpc updatePlayer(Empty) returns (Empty);
+    rpc createPlayer(Player) returns (Empty) {
+        option (google.api.http) = {
+            post: "/player"
+            body: "*"
+        };
+    }
+    rpc getPlayer(Empty) returns (Player){
+        option (google.api.http) = {
+            get: "/player"
+        };
+    }
+    rpc updatePlayer(Player) returns (Empty){}
     rpc usernameAvail(Empty) returns (usernameAvialResponse);
+    rpc trial(Empty) returns (trialResponse) {
+        option (google.api.http) = {
+            get: "/trial"
+        };
+    }
 }
